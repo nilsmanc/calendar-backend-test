@@ -13,11 +13,15 @@ const TodoSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  done: {
+    type: Boolean,
+  },
   profile: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Profile',
     required: true,
   },
+  file: String,
 })
 
 export default mongoose.model('Todo', TodoSchema)
