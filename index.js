@@ -42,6 +42,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 app.get('/todos', TodoController.getAll)
 app.post('/todos', TodoController.create)
+app.get('/todos/:id', TodoController.getOne)
 app.get('/todos/profile/:id', TodoController.getProfileTodos)
 app.patch('/todos/:id', TodoController.update)
 app.delete('/todos/:id', TodoController.remove)

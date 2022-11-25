@@ -13,6 +13,22 @@ export const getAll = async (req, res) => {
   }
 }
 
+export const getOne = async (req, res) => {
+  try {
+    const todoId = req.params.id
+
+    const todo = await TodoModel.findById(todoId).exec()
+
+    res.json(todo)
+  } catch (err) {
+    console.log(err)
+
+    res.status(500).json({
+      message: 'Failed to get todo',
+    })
+  }
+}
+
 export const getProfileTodos = async (req, res) => {
   const profileId = req.params.id
 
