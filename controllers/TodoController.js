@@ -2,7 +2,7 @@ import TodoModel from '../models/Todo.js'
 
 export const getAll = async (req, res) => {
   try {
-    const todos = await TodoModel.find().exec()
+    const todos = await TodoModel.find().populate('profile').exec()
 
     res.json(todos)
   } catch (err) {
@@ -13,18 +13,19 @@ export const getAll = async (req, res) => {
   }
 }
 
-export const getOne = async (req, res) => {
+export const getProfileTodos = async (req, res) => {
+  const profileId = req.params.id
+
   try {
-    const todoId = req.params.id
+    const todos = await TodoModel.find({ profile: { _id: profileId } })
+      .populate('profile')
+      .exec()
 
-    const todo = await TodoModel.findById(todoId).exec()
-
-    res.json(todo)
+    res.json(todos)
   } catch (err) {
     console.log(err)
-
     res.status(500).json({
-      message: 'Failed to get todo',
+      message: 'Failed to get todos',
     })
   }
 }
@@ -37,6 +38,7 @@ export const create = async (req, res) => {
       date: req.body.date,
       file: req.body.file,
       done: req.body.done,
+      profile: req.body.profile,
     })
 
     const todo = await doc.save()

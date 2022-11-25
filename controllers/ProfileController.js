@@ -13,22 +13,6 @@ export const getAll = async (req, res) => {
   }
 }
 
-export const getOne = async (req, res) => {
-  try {
-    const profileId = req.params.id
-
-    const profile = await ProfileModel.findById(profileId).exec()
-
-    res.json(profile)
-  } catch (err) {
-    console.log(err)
-
-    res.status(500).json({
-      message: 'Failed to get profile',
-    })
-  }
-}
-
 export const create = async (req, res) => {
   try {
     const doc = new ProfileModel({
