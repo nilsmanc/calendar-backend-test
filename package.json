@@ -2,12 +2,11 @@
   "name": "calendar-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "index.ts",
-    "start:dev": "nodemon index.ts",
-    "type": "module"
+    "start:dev": "nodemon index.ts"
   },
   "author": "",
   "license": "ISC",
