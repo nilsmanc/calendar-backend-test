@@ -10,7 +10,7 @@ import { ProfileController } from './controllers/index'
 mongoose
   .connect(process.env.MONGODB as string)
   .then(() => console.log('Database OK'))
-  .catch((err) => console.log('Database error', err))
+  .catch((err: Error) => console.log('Database error', err))
 
 const app = express()
 
