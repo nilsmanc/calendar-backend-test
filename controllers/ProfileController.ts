@@ -1,6 +1,8 @@
-import ProfileModel from '../models/Profile.js'
+import { Request, Response } from 'express'
 
-export const getAll = async (req, res) => {
+import ProfileModel from '../models/Profile'
+
+export const getAll = async (req: Request, res: Response) => {
   try {
     const profiles = await ProfileModel.find().exec()
 
@@ -13,7 +15,7 @@ export const getAll = async (req, res) => {
   }
 }
 
-export const create = async (req, res) => {
+export const create = async (req: Request, res: Response) => {
   try {
     const doc = new ProfileModel({
       name: req.body.name,
@@ -31,7 +33,7 @@ export const create = async (req, res) => {
   }
 }
 
-export const remove = async (req, res) => {
+export const remove = async (req: Request, res: Response) => {
   try {
     const profileId = req.params.id
 
@@ -39,7 +41,7 @@ export const remove = async (req, res) => {
       {
         _id: profileId,
       },
-      (err, doc) => {
+      (err: Error, doc: Document) => {
         if (!doc) {
           return res.status(404).json({
             message: 'Profile not found',
