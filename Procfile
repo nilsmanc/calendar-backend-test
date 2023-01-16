@@ -1,1 +1,1 @@
-web: node index.ts
+worket: npm start
