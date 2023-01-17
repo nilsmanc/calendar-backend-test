@@ -1,3 +1,4 @@
+import { Document } from 'mongoose'
 import { Request, Response } from 'express'
 
 import TodoModel from '../models/Todo'

@@ -1,18 +1,18 @@
-import express from 'express'
+import express, { Application } from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import multer from 'multer'
 import fs from 'fs'
 
-import { TodoController } from './controllers/index'
-import { ProfileController } from './controllers/index'
+import { TodoController } from './controllers'
+import { ProfileController } from './controllers'
 
 mongoose
   .connect(process.env.MONGODB as string)
   .then(() => console.log('Database OK'))
   .catch((err: Error) => console.log('Database error', err))
 
-const app = express()
+const app: Application = express()
 
 app.use(cors())
 app.use(express.json())
